@@ -10,7 +10,7 @@ import UIKit
 
 class CalculateViewController: UIViewController {
 
-    var bmiValue = "0.0"
+    var calculatorBrain = CalculatorBrain(bmi: <#T##Float#>)
 
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
@@ -35,16 +35,16 @@ class CalculateViewController: UIViewController {
     @IBAction func calculatePressed(_ sender: UIButton) {
         let height = heightSlider.value
         let weight = weightSlider.value
-       let bmi = weight / pow(height, 2)
-        bmiValue = String(format: "%.1f", bmi)
-        self.performSegue( withIdentifier: "goToResult", sender: self)
+        calculatorBrain.calculateBMI(height: height , weight: weight)
+        
+        performSegue( withIdentifier: "goToResult", sender: self)
         
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult" {
             let destinationVc = segue.destination as! ResultViewController
-            destinationVc.bmiValue = bmiValue
+            destinationVc.bmiValue = calculatorBrain.getBMIValue()
         }
     }
 }
