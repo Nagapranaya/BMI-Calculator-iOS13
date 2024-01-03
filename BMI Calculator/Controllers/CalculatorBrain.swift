@@ -9,7 +9,7 @@
 import Foundation
 struct  CalculatorBrain {
     
-    var bmi : Float = 0.0
+    var bmi : Float?
     
     func getBMIValue() -> String{
         
