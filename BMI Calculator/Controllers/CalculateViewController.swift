@@ -10,7 +10,7 @@ import UIKit
 
 class CalculateViewController: UIViewController {
 
-    var calculatorBrain = CalculatorBrain(bmi: <#T##Float#>)
+    var calculatorBrain = CalculatorBrain()
 
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
@@ -45,6 +45,8 @@ class CalculateViewController: UIViewController {
         if segue.identifier == "goToResult" {
             let destinationVc = segue.destination as! ResultViewController
             destinationVc.bmiValue = calculatorBrain.getBMIValue()
+            destinationVc.advice = calculatorBrain.getAdvice()
+            destinationVc.color = calculatorBrain.getColor()
         }
     }
 }
