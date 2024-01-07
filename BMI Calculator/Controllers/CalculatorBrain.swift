@@ -18,11 +18,11 @@ struct  CalculatorBrain {
         return bmiTo1DecimalPlace
     }
     func getAdvice() -> String{
-        
+        return bmi?.advice ?? "No advice"
     }
     
     func getColor() -> UIColor {
-        
+        return bmi?.color ?? UIColor.white 
     }
     
     mutating func calculateBMI(height: Float , weight: Float) {
